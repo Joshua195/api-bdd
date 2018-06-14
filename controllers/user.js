@@ -16,6 +16,10 @@ const USER_ERROR = {
     status: 400,
     message: 'Fail update user'
   },
+  FAIL_DELETE: {
+    status: 400,
+    message: 'Fail update user'
+  },
 }
 
 function UserError(error) {
@@ -127,15 +131,15 @@ module.exports = {
           message: 'User deleted'
         })
       } else {
-        res.status(400).send({
-          message: 'Fail delete user'
-        })
+        throw new UserError(USER_ERROR.FAIL_DELETE)
       }
     } catch (e) {
-      console.log(e)
-      res.status(500).send({
-        error: e
-      })
+      if (e instanceof UserError) {
+        res.status(e.status).send(e)
+      } else {
+        console.error(e)
+        res.status(500).send({ message: 'Something Went Wrong' })
+      }
     }
   }
 }
