@@ -92,5 +92,50 @@ module.exports = {
         res.status(500).send({ message: 'Something Went Wrong' })
       }
     }
+  },
+
+  async userAdmin(req, res) {
+    try {
+      const passwordHash = await bcrypt.hash(req.body.password, 5)
+      await User.create({
+        _id : new mongoose.Types.ObjectId(),
+        name: req.body.name,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        telephone: req.body.telephone,
+        username: req.body.username,
+        password: passwordHash,
+        isAdmin: true
+      })
+      res.status(200).send({
+        message: 'User registered'
+      })
+    } catch (e) {
+      console.log(e)
+      res.status(500).send({
+        error: e
+      })
+    }
+  },
+
+  async deleteUser(req, res) {
+    try {
+      const { id } = req.params
+      const result = await User.findOneAndRemove({_id: id}).exec()
+      if (!_.isEmpty(result)) {
+        res.status(200).send({
+          message: 'User deleted'
+        })
+      } else {
+        res.status(400).send({
+          message: 'Fail delete user'
+        })
+      }
+    } catch (e) {
+      console.log(e)
+      res.status(500).send({
+        error: e
+      })
+    }
   }
 }

@@ -7,8 +7,14 @@ router.route('/')
 router.route('/login')
   .post(user.login)
 
+router.route('/admin')
+  .post(user.userAdmin)
+
 router.route('/:id')
   .patch(user.updateUser)
+
+router.route('/:id')
+  .delete(user.deleteUser)
 
 module.exports = router
 
