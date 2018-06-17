@@ -48,7 +48,8 @@ module.exports = {
       await Product.create({
         _id : new mongoose.Types.ObjectId(),
         name: req.body.name,
-        price: req.body.price
+        price: req.body.price,
+        description: req.body.description
       })
       res.status(200).send({
         message: 'Product created'
