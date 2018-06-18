@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 
 const ordersSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
+  number: Number,
   idUser: String,
-  status: Boolean,
-  createdAt: { type: Date, default: Date.now },
+  status: { type: Boolean, default: false },
+  createdAt: Date,
   deliveryTime: Date,
   isEnable: { type: Boolean, default: false },
   products: []
