@@ -5,7 +5,7 @@ const couponsSchema = mongoose.Schema({
   key: String,
   description: String,
   quantity: Number,
-  isEnable: { type: Boolean, default: false }
+  isEnable: { type: Boolean, default: true }
 });
 
-module.exports = mongoose.model('Coupons', couponsSchema);
+module.exports = mongoose.model('Coupon', couponsSchema);
