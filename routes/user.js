@@ -10,7 +10,7 @@ router.route('/login')
 router.route('/admin')
   .post(user.userAdmin)
 
-router.route('/users')
+router.route('/')
   .get(user.getUsers)
 
 router.route('/:id')
