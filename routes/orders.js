@@ -6,5 +6,15 @@ router.route('/')
 
 router.route('/:idUser')
   .get(orders.getOrdersByUser)
+
+router.route('/')
+  .get(orders.getOrders)
+
+router.route('/:id')
+  .patch(orders.updateOrder)
+
+router.route('/:id')
+  .delete(orders.deleteOrder)
+
 module.exports = router
 
