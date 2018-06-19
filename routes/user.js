@@ -10,6 +10,9 @@ router.route('/login')
 router.route('/admin')
   .post(user.userAdmin)
 
+router.route('/users')
+  .get(user.getUsers)
+
 router.route('/:id')
   .patch(user.updateUser)
 
