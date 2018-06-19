@@ -1,5 +1,16 @@
-# API-REST BDD
+# api-rest
 
-- Configuration
-  - npm run dev for dev purposes and hot reload
-  - npm run start for prod purposes
+> Back-end for project DBD
+
+## Build Setup
+
+``` bash
+# install dependencies
+$ npm install
+
+# serve with hot reload at localhost:5000
+$ npm run dev
+
+# for production
+$ npm start
+```
