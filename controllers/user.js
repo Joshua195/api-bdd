@@ -57,7 +57,10 @@ module.exports = {
   async login(req, res) {
     try {
       const { username, password } = req.body
+      console.log('username ', username)
+      console.log('password ', password)
       const user = await User.findOne({ username }).exec()
+      console.log(user)
       if (!_.isEmpty(user)) {
         const match = await bcrypt.compare(password, user.password)
         if (match) {
