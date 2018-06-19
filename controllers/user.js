@@ -144,5 +144,23 @@ module.exports = {
         res.status(500).send({ message: 'Something Went Wrong' })
       }
     }
+  },
+
+  async getUsers(req, res){
+    try {
+      const users = await User.find().exec()
+      if (!_.isEmpty(users)) {
+        res.status(200).send(users)
+      } else {
+        res.status(400).send({
+          message: 'No entries found'
+        })
+      }
+    } catch (e) {
+      console.log(e)
+      res.status(500).send({
+        error: e
+      })
+    }
   }
 }
